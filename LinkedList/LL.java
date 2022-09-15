@@ -1,71 +1,33 @@
+package LinkedList;
+
 public class LL {
-   
-   static Node head;
+   protected Node head;
+    protected Node tail;
+   static int size =0;
 
-
-   static class Node{
-
-        String data;
-        Node next;
-
-        Node(String data){
-            this.data=data;
-            this.next=null;
+   void addFirst(int data){
+        Node newNode = new Node(data);
+        newNode.next=head;
+        head=newNode;
+        if(tail==null){
+            tail = newNode;
         }
+        size++;
     }
+    int deletefirst(){
+       int val = head.data;
+       head = head.next;
+       size--;
+       return val;
 
-
-// Add First
-static void addFirst(String data){
-    Node newNode = new Node(data);
-
-
-    newNode.next=head;
-    head = newNode;
-}
-
-// Add Last 
-
-static void addLast(String data){
-    Node newNode = new Node(data);
-    if(head==null){
-newNode=head;
-return;
     }
-
-    Node LastNode = head;
-while(LastNode.next!=null){
-    LastNode=LastNode.next;
-}
-LastNode.next=newNode;
-}
-
-// For printing New LinkedList
-
-static void printList(){
-    Node curNode = head;
-
-  while(curNode!=null){
-      System.out.print(curNode.data + "  -->");
-      curNode=curNode.next;
-  }
-  System.out.println("Null");
-}
-
-
-// for calculating the size 
-
-
-
-public static void main(String[] args) {
-    LL list = new LL();
-    list.addFirst("moring");
-    list.addFirst("good");
-    list.addFirst("hello");
-    list.addLast("deepu");
-    list.printList();
-
-}
-
+    void print(){
+       Node temp = head;
+       while(temp!=null){
+           System.out.print(temp.data+"--> ");
+           temp = temp.next;
+       }
+        System.out.println("NULL");
+    }
 
 }
